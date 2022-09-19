@@ -36,4 +36,4 @@ ctrlUser.putUser=async(req,res)=>{
     })
 };
 
-module.export = ctrlUser;
+module.exports = ctrlUser;
