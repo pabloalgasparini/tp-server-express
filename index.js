@@ -13,7 +13,7 @@ const app = express();
 dbConnect();
 
 // Configuraciones
-const port = process.env.PORT || 3000;
+const port = 5000 || 3000;
 
 // MIDDLEAWERES
 app.use(cors());
