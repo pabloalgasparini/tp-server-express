@@ -2,7 +2,10 @@ const mongoose = require ('mongoose');
 
 const dbConnect = ()=>{
     try{
-        mongoose.connect('mongodb+srv://pablo:1234@cluster0.udcbn57.mongodb.net/?retryWrites=true&w=majority');
+        mongoose.connect(process.env.MONGO_URI,{
+            useNewUrlParser:true,
+            useUnfieldTopology:true
+        });
 
         console.log('Conectado a la Base de Datos');
     }catch (error){
