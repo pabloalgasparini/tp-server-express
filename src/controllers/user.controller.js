@@ -17,15 +17,18 @@ ctrlUser.postUser = async (req, res)=>{
     const {username, password, email}=req.body;
 
     // Se instancia un nuevo documento de Mongodb para luego ser guardada.
-    const newUser = new URLSearchParams({
+    /*const newUser = new URLSearchParams({
         username,
         password,
         email
-    });
+    });*/
+    const newUser= new User({username, password, email});
+    console.log(newUser);
+     await newUser.save()
 
-return res,json({
+return res.json({
     msg: 'Usuario creado correctamente',
-    user
+    newUser
 })
 }
 

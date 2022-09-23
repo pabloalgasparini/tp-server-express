@@ -13,7 +13,7 @@ const app = express();
 dbConnect();
 
 // Configuraciones
-const port = 5000 || 3000;
+const port = process.env.PORT || 3000;
 
 // MIDDLEAWERES
 app.use(cors());
@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'src/public')))
 
 // Importando rutas
 app.use(require("./src/routes/user.routers"));
+app.use(require('./src/routes/tareas.routes')); // Importando rutas
 
 // Configurando puerto
 app.listen(port, ()=>{
