@@ -10,8 +10,8 @@ const {
     
     router.post("/user", postUser);
 
-    // router.put("/user", putUser);
+    router.put("/user/:id_user", putUser);
 
-    // router.delete("/user", deleteUser);
+    // router.delete("/user_/:id_user", deleteUser);
 
     module.exports = router;
