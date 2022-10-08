@@ -5,7 +5,7 @@ const ctrlUser = {};
 // Controlador para obtener todos los usuarios de la base de datos con método. save()
 ctrlUser.getUser=async(req,res)=>{
     // Se consultan todos los documenttos de la base de datos
-    const users = await user.find();
+    const users = await User.find();
 
     // Se devulve al cliente u arreglo con los datos de los usuarios.
     return res.json(users);
@@ -17,41 +17,42 @@ ctrlUser.postUser = async (req, res)=>{
     const {id, username, password, email}=req.body;
 
     // Se instancia un nuevo documento de Mongodb para luego ser guardada.
-    /*const newUser = new URLSearchParams({
-        username,
-        password,
-        email
-    });*/
+    // const newUser = new URLSearchParams({
+    //     id,
+    //     username,
+    //     password,
+    //     email
+    // });
     const newUser= new User({id,username, password, email});
-    console.log(newUser);
-     await newUser.save()
+    const user=await newUser.save()
+    console.log(user);
 
 return res.json({
     msg: 'Usuario creado correctamente',
-    newUser
+    user
 })
 }
 
 // Controlador para actualizar una tarea
-ctrlUser.putUser = async (req, res) => {
-    const id = req.params.id_user
-    const {username, password, email}= req.body;
-    try {
-        await User.findOneAndUpdate({id},{username,password,email},(err,doc)=>{
-            if (err){
-                console.log(err)
-            }else{
-                console.log("Update User: ",doc)
-            }
-        })
-        // const tareasUpdate = await tareaModel.findByIdAndUpdate(id,)
-        return res.json({
-            msg: 'Actualizado correctamente'
-        })
-    } catch (error) {
-        return res.json({message: error.message})
-    }
-};
+// ctrlUser.putUser = async (req, res) => {
+//     const id = req.params.id_user
+//     const {username, password, email}= req.body;
+//     try {
+//         await User.findOneAndUpdate({id},{username,password,email},(err,doc)=>{
+//             if (err){
+//                 console.log(err)
+//             }else{
+//                 console.log("Update User: ",doc)
+//             }
+//         })
+//         // const tareasUpdate = await tareaModel.findByIdAndUpdate(id,)
+//         return res.json({
+//             msg: 'Actualizado correctamente'
+//         })
+//     } catch (error) {
+//         return res.json({message: error.message})
+//     }
+// };
 
 // Controlador para eliminar usuario, requiere ID de usuario.
 // ctrltareas.deletetareas = async (req, res) => {const id = req.params.id_tareas
